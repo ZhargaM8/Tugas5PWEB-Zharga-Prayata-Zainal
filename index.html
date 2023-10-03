@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather API Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jowo.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-8">
+            <select class="form-select" aria-label="Default select example" id="Pick">
+        <option selected>Pilih daerah</option>
+        <option value="501306">Kota Surabaya</option>
+        <option value="501272">Bangkalan</option>
+        <option value="501273">Banyuwangi</option>
+        <option value="501274">Batu</option>
+        <option value="501275">Kota Blitar</option>
+        <option value="501277">Bojonegoro</option>
+        <option value="501278">Bondowoso</option>
+        <option value="501279">Gresik</option>
+        <option value="501280">Jember</option>
+        <option value="501281">Jombang</option>
+        <option value="501282">Kota Kediri</option>
+        <option value="501284">Kabupaten Malang</option>
+        <option value="501285">Lamongan</option>
+        <option value="501286">Lumajang</option>
+        <option value="501287">Kota Madiun</option>
+        <option value="501288">Kabupaten Madiun</option>
+        <option value="501289">Magetan</option>
+        <option value="501290">Kota Malang</option>
+        <option value="501291">Kota Mojokerto</option>
+        <option value="501293">Nganjuk</option>
+        <option value="501294">Ngawi</option>
+        <option value="501295">Pacitan</option>
+        <option value="501296">Pamekasan</option>
+        <option value="501297">Kota Pasuruan</option>
+        <option value="501299">Ponorogo</option>
+        <option value="501300">Kota Probolinggo</option>
+        <option value="501302">Sampang</option>
+        <option value="501303">Sidoarjo</option>
+        <option value="501304">Situbondo</option>
+        <option value="501305">Sumenep</option>
+        <option value="501307">Trenggalek</option>
+        <option value="501308">Tuban</option>
+        <option value="501309">Tulungagung</option>
+        
+            </select>
+        </div>
+        <div class="col-4">
+            <button type="button" class="btn btn-info" onclick="doit()">Click to search</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour0" onclick="changetime(0)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour6" onclick="changetime(1)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour12" onclick="changetime(2)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour18" onclick="changetime(3)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour24" onclick="changetime(4)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour30" onclick="changetime(5)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour36" onclick="changetime(6)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour42" onclick="changetime(7)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour48" onclick="changetime(8)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour54" onclick="changetime(9)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour60" onclick="changetime(10)"></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info"id="hour66" onclick="changetime(11)"></button>
+        </div>
+    </div>
+    <div id="weatherData">
+        <h2 id="cityname">namakota</h2>
+        <img id="weatherimg"></img>
+        <p id="weathertext">cuaca</p>
+        <p id="humidity">kelembapan</p>
+        <p id="tempratureC">suhu Celcius</p>
+        <p id="tempratureF">suhu Farenheit</p>
+        
+    </div>
+</body>
+</html>
+
