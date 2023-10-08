@@ -1,3 +1,19 @@
+var first=true;
+$(document).ready(function() {
+    $('#Pick').change(function() {
+        $('.selectbtn').removeClass("active");
+        $('.firstbtn').addClass("active");
+        if ($(this).val() != "Pilih daerah") {
+            $("#bodycardthingamajig").show().css('opacity', '1');
+        }
+  });
+});
+$(document).ready(function() {
+    $('.selectbtn').click(function() {
+        $(".selectbtn").removeClass("active"); 
+        $(this).addClass("active"); 
+    });
+  });
 $.ajax({
     url: 'https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-JawaTimur.xml',
     type: 'GET',
@@ -14,14 +30,21 @@ $.ajax({
                 $('#hour'+String(index)).text(selecttext(d, index));
             }
         });
+        $(data).find('area').each(function(){
+            let id=$(this).attr('id');
+            if (id!=1200076) {
+                let name=$(this).find('name[xml\\:lang="id_ID"]').text();
+                $('#Pick').append("<option value="+String(id)+">"+name+"</option>")
+            }
+        });
     },
     error: function(error) {
         console.log(error);
     }
 });
+
 function CtoF(celcius) {
-    let farenheit=(celcius*9/5)+32;
-    return farenheit;
+    return (celcius*9/5)+32;
 }
 function selecttext(d, num) {
     let localdate = new Date(d.getTime());
@@ -44,7 +67,13 @@ $.ajax({
             const thing= $(this).find('area[id="'+pick+'"]');
             const city = thing.find('name[xml\\:lang="id_ID"]').text();
             $('#cityname').text(city);
-
+            const time= $(this).find('issue');
+            const year=time.find('year').text();
+            const month=time.find('month').text();
+            const day=time.find('day').text();
+            const hour=time.find('hour').text();
+            let d = new Date(year,month,day,hour);
+            $('#timeshow').text(selecttext(d,0));
             let weather=[];
             thing.find('parameter[id="weather"]').find('timerange').each(function(){
                weather.push($(this).find('value').text()) 
@@ -120,7 +149,14 @@ function changetime(num) {
             const thing= $(this).find('area[id="'+pick+'"]');
             const city = thing.find('name[xml\\:lang="id_ID"]').text();
             $('#cityname').text(city);
-
+            const time= $(this).find('issue');
+            const year=time.find('year').text();
+            const month=time.find('month').text();
+            const day=time.find('day').text();
+            const hour=time.find('hour').text();
+            let d = new Date(year,month,day,hour);
+            $('#timeshow').text(selecttext(d,num*6));
+            
             let weather=[];
             thing.find('parameter[id="weather"]').find('timerange').each(function(){
                weather.push($(this).find('value').text()) 
